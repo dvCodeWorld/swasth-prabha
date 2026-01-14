@@ -1,1 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Styles for Swasth Prabha Healthcare Platform */
+
+/* Material Theme - Wellness Green */
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$swasth-prabha-primary: mat.define-palette(mat.$green-palette, 700);
+$swasth-prabha-accent: mat.define-palette(mat.$light-green-palette, A200);
+$swasth-prabha-warn: mat.define-palette(mat.$red-palette);
+
+$swasth-prabha-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $swasth-prabha-primary,
+      accent: $swasth-prabha-accent,
+      warn: $swasth-prabha-warn,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
+
+@include mat.all-component-themes($swasth-prabha-theme);
+
+/* Global Resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #fafafa;
+}

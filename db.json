@@ -1,0 +1,188 @@
+{
+  "hospitals": [
+    {
+      "id": "1",
+      "name": "City Hospital",
+      "location": "Shahdol, MP",
+      "type": "Government",
+      "phone": "07652-234567",
+      "totalBeds": 150,
+      "availableBeds": 45,
+      "icuBeds": 20,
+      "icuAvailable": 8,
+      "sncuBeds": 15,
+      "sncuAvailable": 5,
+      "emergencyBeds": 25,
+      "emergencyAvailable": 12,
+      "verified": true,
+      "ayushmanEnabled": true
+    },
+    {
+      "id": "2",
+      "name": "District Hospital",
+      "location": "Shahdol, MP",
+      "type": "Government",
+      "phone": "07652-234568",
+      "totalBeds": 200,
+      "availableBeds": 67,
+      "icuBeds": 30,
+      "icuAvailable": 15,
+      "sncuBeds": 20,
+      "sncuAvailable": 8,
+      "emergencyBeds": 30,
+      "emergencyAvailable": 18,
+      "verified": true,
+      "ayushmanEnabled": true
+    },
+    {
+      "id": "3",
+      "name": "Shahdol Medical Center",
+      "location": "Shahdol, MP",
+      "type": "Private",
+      "phone": "07652-234569",
+      "totalBeds": 100,
+      "availableBeds": 28,
+      "icuBeds": 15,
+      "icuAvailable": 6,
+      "sncuBeds": 10,
+      "sncuAvailable": 3,
+      "emergencyBeds": 20,
+      "emergencyAvailable": 9,
+      "verified": true,
+      "ayushmanEnabled": false
+    }
+  ],
+  "doctors": [
+    {
+      "id": "1",
+      "name": "Dr. Rajesh Kumar",
+      "speciality": "Cardiologist",
+      "qualification": "MBBS, MD (Cardiology)",
+      "experience": 15,
+      "hospitalId": "1",
+      "hospitalName": "City Hospital",
+      "phone": "9876543210",
+      "consultationFee": 500,
+      "rating": 4.5,
+      "available": true
+    },
+    {
+      "id": "2",
+      "name": "Dr. Priya Sharma",
+      "speciality": "Pediatrician",
+      "qualification": "MBBS, MD (Pediatrics)",
+      "experience": 12,
+      "hospitalId": "1",
+      "hospitalName": "City Hospital",
+      "phone": "9876543211",
+      "consultationFee": 400,
+      "rating": 4.7,
+      "available": true
+    },
+    {
+      "id": "3",
+      "name": "Dr. Amit Verma",
+      "speciality": "Orthopedic",
+      "qualification": "MBBS, MS (Orthopedics)",
+      "experience": 18,
+      "hospitalId": "2",
+      "hospitalName": "District Hospital",
+      "phone": "9876543212",
+      "consultationFee": 600,
+      "rating": 4.6,
+      "available": true
+    },
+    {
+      "id": "4",
+      "name": "Dr. Sunita Patel",
+      "speciality": "Gynecologist",
+      "qualification": "MBBS, MD (Gynecology)",
+      "experience": 10,
+      "hospitalId": "2",
+      "hospitalName": "District Hospital",
+      "phone": "9876543213",
+      "consultationFee": 450,
+      "rating": 4.8,
+      "available": true
+    },
+    {
+      "id": "5",
+      "name": "Dr. Vikram Singh",
+      "speciality": "General Physician",
+      "qualification": "MBBS, MD",
+      "experience": 20,
+      "hospitalId": "3",
+      "hospitalName": "Shahdol Medical Center",
+      "phone": "9876543214",
+      "consultationFee": 350,
+      "rating": 4.4,
+      "available": true
+    },
+    {
+      "id": "6",
+      "name": "Dr. Neha Gupta",
+      "speciality": "Dermatologist",
+      "qualification": "MBBS, MD (Dermatology)",
+      "experience": 8,
+      "hospitalId": "3",
+      "hospitalName": "Shahdol Medical Center",
+      "phone": "9876543215",
+      "consultationFee": 500,
+      "rating": 4.5,
+      "available": true
+    }
+  ],
+  "appointments": [
+    {
+      "id": "1",
+      "patientId": "1",
+      "patientName": "Ramesh Kumar",
+      "patientPhone": "9876543220",
+      "doctorId": "1",
+      "doctorName": "Dr. Rajesh Kumar",
+      "hospitalId": "1",
+      "hospitalName": "City Hospital",
+      "appointmentDate": "2026-01-25T00:00:00.000Z",
+      "timeSlot": "10:00 AM",
+      "type": "Clinic",
+      "status": "Scheduled",
+      "symptoms": "Chest pain and breathing difficulty",
+      "consultationFee": 500,
+      "createdAt": "2026-01-15T10:30:00.000Z"
+    }
+  ],
+  "patients": [
+    {
+      "id": "1",
+      "name": "Ramesh Kumar",
+      "phone": "9876543220",
+      "email": "ramesh@example.com",
+      "age": 45,
+      "gender": "Male",
+      "address": "Shahdol, MP"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Ramesh Kumar",
+      "email": "patient@test.com",
+      "phone": "9876543220",
+      "role": "Patient"
+    },
+    {
+      "id": "2",
+      "name": "Hospital Admin",
+      "email": "admin@hospital.com",
+      "phone": "9876543221",
+      "role": "Hospital Admin"
+    },
+    {
+      "id": "3",
+      "name": "Super Admin",
+      "email": "super@admin.com",
+      "phone": "9876543222",
+      "role": "Super Admin"
+    }
+  ]
+}
