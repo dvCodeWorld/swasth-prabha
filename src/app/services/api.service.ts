@@ -12,7 +12,7 @@ import { User, LoginCredentials, AuthResponse } from '../models/user.models';
 })
 export class ApiService {
   private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:3000';
+  private baseUrl = 'http://62.72.57.68:3000';
 
   getHospitals(): Observable<Hospital[]> {
     return this.http.get<Hospital[]>(`${this.baseUrl}/hospitals`);

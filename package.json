@@ -10,7 +10,9 @@
     "backend": "json-server --watch db.json --port 3000",
     "dev": "concurrently \"npm run backend\" \"npm start\"",
     "build:prod": "ng build --configuration production",
-    "start:prod": "node server.js"
+    "start:prod": "node server.js",
+    "pwa:build": "ng build --configuration production",
+    "pwa:serve": "npm run pwa:build && npx http-server dist/swasth-prabha/browser -p 8080 -c-1"
   },
   "prettier": {
     "printWidth": 100,
