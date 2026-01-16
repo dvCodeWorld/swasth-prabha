@@ -6,13 +6,14 @@ import { Doctor } from '../models/doctor.models';
 import { Patient, MedicalRecord } from '../models/patient.models';
 import { Appointment } from '../models/appointment.models';
 import { User, LoginCredentials, AuthResponse } from '../models/user.models';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
   private http = inject(HttpClient);
-  private baseUrl = 'http://62.72.57.68:3000';
+  private baseUrl = environment.apiUrl;
 
   getHospitals(): Observable<Hospital[]> {
     return this.http.get<Hospital[]>(`${this.baseUrl}/hospitals`);

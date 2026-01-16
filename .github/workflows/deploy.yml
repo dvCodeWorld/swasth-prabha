@@ -1,0 +1,62 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build production
+        run: npm run build:prod
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
+
+      - name: Add VPS to known hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.VPS_IP }} >> ~/.ssh/known_hosts
+
+      - name: Create remote directories
+        run: |
+          ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }} "mkdir -p ${{ secrets.VPS_APP_DIR }}/dist/swasth-prabha"
+
+      - name: Deploy files to VPS
+        run: |
+          scp -r dist/swasth-prabha/browser ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }}:${{ secrets.VPS_APP_DIR }}/dist/swasth-prabha/
+          scp server.js ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }}:${{ secrets.VPS_APP_DIR }}/
+          scp db.json ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }}:${{ secrets.VPS_APP_DIR }}/
+          scp package.json ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }}:${{ secrets.VPS_APP_DIR }}/
+
+      - name: Install dependencies on VPS
+        run: |
+          ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }} "cd ${{ secrets.VPS_APP_DIR }} && npm install --production"
+
+      - name: Restart application
+        run: |
+          ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }} "pm2 restart swasth-prabha || pm2 start ${{ secrets.VPS_APP_DIR }}/server.js --name swasth-prabha && pm2 save"
+
+      - name: Deployment status
+        run: |
+          echo "✅ Deployment completed successfully!"
+          echo "🌐 Application URL: http://${{ secrets.VPS_IP }}:3000"
