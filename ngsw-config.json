@@ -33,6 +33,7 @@
     {
       "name": "api-cache",
       "urls": [
+        "http://62.72.57.68:3000/**",
         "http://localhost:3000/**",
         "/api/**"
       ],
