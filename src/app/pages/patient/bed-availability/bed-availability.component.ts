@@ -35,7 +35,7 @@ import { Hospital } from '../../../models/hospital.models';
         </mat-form-field>
 
         <mat-chip-set>
-          <mat-chip [class.selected]="showOnlyAvailable" (click)="toggleAvailability()">
+          <mat-chip [class.selected]="showOnlyAvailable()" (click)="toggleAvailability()">
             <mat-icon>filter_list</mat-icon>
             Only Available
           </mat-chip>
