@@ -60,4 +60,4 @@ jobs:
       - name: Deployment status
         run: |
           echo "✅ Deployment completed successfully!"
-          echo "🌐 Application URL: http://${{ secrets.VPS_IP }}:3000"
+          echo "🌐 Application URL: https://www.gauranshsynergy.com"
