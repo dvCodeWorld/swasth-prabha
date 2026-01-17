@@ -13,7 +13,7 @@ import { AuthService } from '../../services/auth.service';
       <header class="header">
         <div class="logo">
           <mat-icon class="logo-icon">health_and_safety</mat-icon>
-          <h1>Swasth Prabha</h1>
+          <h1>Swasthprabha</h1>
         </div>
         <p class="tagline">Digital Healthcare Platform for Shahdol</p>
       </header>
@@ -178,7 +178,9 @@ import { AuthService } from '../../services/auth.service';
 
       .role-card {
         cursor: pointer;
-        transition: transform 0.2s, box-shadow 0.2s;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
         text-align: center;
         padding: 1.5rem;
       }

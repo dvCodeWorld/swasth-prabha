@@ -40,22 +40,22 @@ jobs:
 
       - name: Create remote directories
         run: |
-          ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }} "mkdir -p ${{ secrets.VPS_APP_DIR }}/dist/swasth-prabha"
+          ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }} "mkdir -p /var/www/html/dist/swasth-prabha"
 
       - name: Deploy files to VPS
         run: |
-          scp -r dist/swasth-prabha/browser ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }}:${{ secrets.VPS_APP_DIR }}/dist/swasth-prabha/
-          scp server.js ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }}:${{ secrets.VPS_APP_DIR }}/
-          scp db.json ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }}:${{ secrets.VPS_APP_DIR }}/
-          scp package.json ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }}:${{ secrets.VPS_APP_DIR }}/
+          scp -r dist/swasth-prabha/browser ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }}:/var/www/html/dist/swasth-prabha/
+          scp server.js ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }}:/var/www/html/
+          scp db.json ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }}:/var/www/html/
+          scp package.json ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }}:/var/www/html/
 
       - name: Install dependencies on VPS
         run: |
-          ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }} "cd ${{ secrets.VPS_APP_DIR }} && npm install --production"
+          ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }} "cd /var/www/html && npm install --production"
 
       - name: Restart application
         run: |
-          ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }} "pm2 restart swasth-prabha || pm2 start ${{ secrets.VPS_APP_DIR }}/server.js --name swasth-prabha && pm2 save"
+          ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }} "pm2 restart swasth-prabha || pm2 start /var/www/html/server.js --name swasth-prabha && pm2 save"
 
       - name: Deployment status
         run: |
