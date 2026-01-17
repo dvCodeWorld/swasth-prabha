@@ -51,7 +51,7 @@ jobs:
 
       - name: Install dependencies on VPS
         run: |
-          ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }} "cd /var/www/html && npm install --omit=dev"
+          ssh -o ServerAliveInterval=60 -o ServerAliveCountMax=10 ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }} "cd /var/www/html && npm install --omit=dev --prefer-offline --no-audit"
 
       - name: Restart application
         run: |
